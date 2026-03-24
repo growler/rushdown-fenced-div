@@ -1,0 +1,31 @@
+[package]
+name = "rushdown-fenced-div"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.87"
+description = "Fenced div extension for rushdown markdown parser"
+authors = ["Alexey Naidyonov <alexey.naidyonov@gmail.com>"]
+documentation = "https://docs.rs/rushdown-fenced-div"
+homepage = "https://github.com/growler/rushdown-fenced-div"
+repository = "https://github.com/growler/rushdown-fenced-div"
+readme = "README.md"
+license = "MIT"
+keywords = ["markdown", "commonmark"]
+categories = ["text-processing"]
+resolver = "2"
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[features]
+default = ["std"]
+std = ["rushdown/default"]
+alloc = []
+no-std = ["alloc", "rushdown/no-std"]
+
+[dependencies]
+rushdown = { version = "0.12.0", default-features = false }
