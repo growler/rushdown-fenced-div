@@ -1,6 +1,6 @@
 # rushdown-fenced-div
 
-`rushdown-fenced-div` is a small extension crate for [rushdown](https://github.com/yuin/rushdown)
+`rushdown-fenced-div` is a small extension crate for [rushdown](https://crates.io/crates/rushdown)
 that adds Pandoc-style fenced div containers.
 
 It parses fenced div blocks opened by `:::` fences, supports admonition-style shorthand class or
