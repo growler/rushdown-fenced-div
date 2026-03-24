@@ -7,8 +7,7 @@ It parses fenced div blocks opened by `:::` fences, supports admonition-style sh
 attribute list, allows nested fenced divs, and provides a default HTML renderer that emits 
 `<div>` elements with the parsed attributes.
 
-For the upstream syntax definition, see Pandoc’s
-[`Divs and Spans` documentation](https://pandoc.org/MANUAL.html#divs-and-spans).
+For the upstream syntax definition, see Pandoc’s [`Fenced Divs` documentation](https://pandoc.org/MANUAL.html#extension-fenced_divs).
 
 ## Installation
 
