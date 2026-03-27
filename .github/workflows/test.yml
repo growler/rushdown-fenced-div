@@ -1,0 +1,61 @@
+name: Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: Test on ${{ matrix.rust }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        rust: [stable, beta, nightly]
+    
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install Rust (${{ matrix.rust }})
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+          components: llvm-tools-preview
+
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@cargo-llvm-cov
+
+      - name: Run Tests
+        run: cargo test -- --nocapture --test-threads=1
+        env:
+          RUST_BACKTRACE: 1 
+
+      - name: Report Coverage to Summary
+        if: matrix.rust == 'nightly'
+        id: coverage_step
+        run: |
+          echo "## Code Coverage Report" >> $GITHUB_STEP_SUMMARY
+          RAW_OUTPUT=$(cargo llvm-cov --branch --workspace)
+          TOTAL_COV=$(echo "$RAW_OUTPUT" | grep "TOTAL" | awk '{print $10}')
+          echo "total_coverage=$TOTAL_COV" >> $GITHUB_OUTPUT
+          echo "${RAW_OUTPUT}"  | sed -E 's/[[:space:]]{2,}/  /g' | awk '
+            BEGIN { FS = "  "; OFS = " | "; }
+            /^-+$/ { next }
+            {
+                gsub(/^ +| +$/, "");
+                line = "| ";
+                for (i = 1; i <= NF; i++) {
+                    gsub(/^ +| +$/, "", $i);
+                    line = line $i (i == NF ? " |" : " | ");
+                }
+                print line;
+            }
+            NR == 1 {
+                sep = "|";
+                for (i = 1; i <= NF; i++) sep = sep " --- |";
+                print sep;
+            }
+          ' >> $GITHUB_STEP_SUMMARY 
+

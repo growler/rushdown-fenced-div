@@ -89,9 +89,9 @@ dependencies = [
 
 [[package]]
 name = "rushdown"
-version = "0.12.0"
+version = "0.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "23bfd01327e9f1ef06d758005496016cea18dafc67a2a895d3812be0a76adf0c"
+checksum = "c0d62648e0634c3b8c90ef0654ab81b0d28274c71c007b67a6073a68b68eef48"
 dependencies = [
  "bitflags",
  "hashbrown",

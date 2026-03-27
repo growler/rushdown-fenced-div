@@ -28,4 +28,4 @@ alloc = []
 no-std = ["alloc", "rushdown/no-std"]
 
 [dependencies]
-rushdown = { version = "0.12.0", default-features = false }
+rushdown = { version = "0.16", default-features = false }
