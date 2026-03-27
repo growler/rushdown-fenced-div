@@ -1,4 +1,5 @@
 # rushdown-fenced-div
+[![Tests](https://github.com/growler/rushdown-fenced-div/actions/workflows/test.yml/badge.svg)](https://github.com/growler/rushdown-fenced-div/actions/workflows/test.yml) [![Docs](https://docs.rs/rushdown-fenced-div/badge.svg)](https://docs.rs/rushdown-fenced-div) [![Crates.io](https://img.shields.io/crates/v/rushdown-fenced-div?maxAge=2592000)](https://crates.io/crates/rushdown-fenced-div)
 
 `rushdown-fenced-div` is a small extension crate for [rushdown](https://crates.io/crates/rushdown)
 that adds Pandoc-style fenced div containers.
@@ -15,7 +16,7 @@ Add the crate to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-rushdown = "0.12"
+rushdown = "0.16"
 rushdown-fenced-div = "0.1"
 ```
 
