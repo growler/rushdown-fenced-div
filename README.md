@@ -16,7 +16,7 @@ Add the crate to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-rushdown = "0.16"
+rushdown = "0.18"
 rushdown-fenced-div = "0.1"
 ```
 
